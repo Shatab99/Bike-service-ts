@@ -25,6 +25,11 @@ const login = catchAsync(async (req, res) => {
 
     const token = createToken({ email: user.email, role: user.role }, config.jwtSecret as string, "10d")
 
+    res.cookie("Token",token, {
+        secure : config.nodeEnv === 'production',
+        httpOnly : true
+    })
+
     res.send({
         success: true,
         statusCode: 200,

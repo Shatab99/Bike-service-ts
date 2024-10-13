@@ -2,10 +2,12 @@ import express from 'express'
 import cors from 'cors'
 import globalErrorHandler from './app/Utils/globalError.handler'
 import router from './app/modules/Router/index.Router'
+import cookiePaser from 'cookie-parser'
 const app = express()
 
 app.use(express.json())
 app.use(cors())
+app.use(cookiePaser())
 
 
 app.get('/', (req, res) => {
